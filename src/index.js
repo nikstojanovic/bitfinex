@@ -1,15 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import dashboardReducer from './store/reducers/dashboard';
+import orderReducer from './store/reducers/order';
+import authReducer from './store/reducers/auth';
+import { watchAuth, watchDashboard, watchOrder } from './store/sagas/index';
+
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+
+const rootReducer = combineReducers({
+    dashboard: dashboardReducer,
+    order: orderReducer,
+    auth: authReducer
+});
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(sagaMiddleware)
+));
+
+sagaMiddleware.run(watchAuth);
+sagaMiddleware.run(watchDashboard);
+sagaMiddleware.run(watchOrder);
+
+const app = (
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </React.StrictMode>
 );
+
+ReactDOM.render(app, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
