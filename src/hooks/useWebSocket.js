@@ -1,12 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { NavLink } from 'react-router-dom';
+import {useState, useRef, useEffect} from 'react';
 
-import endpoints from '../../configuration/endpoints'
+import endpoints from '../configuration/endpoints'
 
-const SingleRow = ({pairId, hasDetailLink}) => {
+export default function useWebSocket(pairId) {
     const [rowData, setRowData] = useState({});
-    const webSocket = useRef(null);
     const pairSymbol = pairId.toUpperCase();
+    const webSocket = useRef(null);
 
     useEffect(() => {
         webSocket.current = new WebSocket(endpoints.BITFINEX_WS);
@@ -43,25 +42,5 @@ const SingleRow = ({pairId, hasDetailLink}) => {
         };
     }, [pairSymbol]);
 
-    const rowValues = Object.values(rowData);
-    const rowKeys = Object.keys(rowData);
-
-    return (
-        <tr>
-            {rowValues.map((cellData, idx) => {
-                const cellValue = cellData.toLocaleString('en');
-
-                return (
-                    <td key={rowKeys[idx]}>
-                        {hasDetailLink && idx === 0
-                            ? <NavLink to={`/detail/${pairId}`}>{cellValue}</NavLink>
-                            : cellValue
-                        }
-                    </td>
-                )
-            })}
-        </tr>
-    )
+    return [rowData, setRowData];
 }
-
-export default SingleRow;

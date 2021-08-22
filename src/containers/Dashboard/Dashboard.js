@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import SingleRow from '../../components/SingleRow/SingleRow';
+import TableRow from '../../components/TableRow/TableRow';
 import * as actions from '../../store/actions/index';
 
 const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
@@ -19,7 +19,7 @@ const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
 
     if (isDataInitialized) {
         const rows = tradingPairs.map(tradingPair => (
-            <SingleRow
+            <TableRow
                 key={tradingPair}
                 pairId={tradingPair}
                 hasDetailLink

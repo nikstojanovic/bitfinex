@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useLocalStorage from '../../hooks/useLocalStorage';
-import SingleRow from '../../components/SingleRow/SingleRow';
+import TableRow from '../../components/TableRow/TableRow';
 
 const Favorites = () => {
     const [favorites] = useLocalStorage(`favorites`, []);
@@ -9,7 +9,7 @@ const Favorites = () => {
     let content = <div>NO FAVORITES</div>;
 
     if (favorites.length) {
-        const rows = [...favorites].map(pairId => <SingleRow key={pairId} pairId={pairId} hasDetailLink />)
+        const rows = [...favorites].map(pairId => <TableRow key={pairId} pairId={pairId} hasDetailLink />)
 
         content = (
             <table>
