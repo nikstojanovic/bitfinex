@@ -22,12 +22,12 @@ const Modal = ({show, modalClosed, children}) => {
 Modal.propTypes = {
     show: PropTypes.bool,
     modalClosed: PropTypes.func.isRequired,
-    children: PropTypes.any,
+    children: PropTypes.node,
 };
 
 Modal.defaultProps = {
     show: false,
-    children: '',
+    children: React.createElement('div'),
 };
 
 export default Modal;

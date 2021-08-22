@@ -34,7 +34,7 @@ export default function useWebSocket(pairId) {
                     pairSymbol,
                     lastPrice: pairDetails[6],
                     dailyChange: pairDetails[4],
-                    dailyChangePercent: pairDetails[5],
+                    dailyChangePercent: pairDetails[5] * 100,
                     dailyHigh: pairDetails[8],
                     dailyLow: pairDetails[9],
                 });

@@ -20,7 +20,7 @@ const DataTable = ({tableHeader, children}) => {
 
 DataTable.propTypes = {
     tableHeader: PropTypes.array.isRequired,
-    children: PropTypes.any.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 export default DataTable;
