@@ -9,7 +9,7 @@ const navigationItems = (props) => (
     <ul className="NavigationItems">
         <NavigationItem link={routePaths.DASHBOARD} exact>Home</NavigationItem>
         { props.isAuthenticated
-            ? <NavigationItem link={routePaths.FAVOURITES}>Favorites</NavigationItem>
+            ? <NavigationItem link={routePaths.FAVORITES}>Favorites</NavigationItem>
             : null}
     </ul>
 );

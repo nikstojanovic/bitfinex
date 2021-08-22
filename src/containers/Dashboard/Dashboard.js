@@ -28,20 +28,20 @@ const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
         ));
         
         content = (
-            <table style={{width: '100%'}}>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Last</th>
-                    <th>Change</th>
-                    <th>Change Percent</th>
-                    <th>High</th>
-                    <th>Low</th>
-                </tr>
-            </thead>
-            <tbody>
-                {rows}
-            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last</th>
+                        <th>Change</th>
+                        <th>Change Percent</th>
+                        <th>High</th>
+                        <th>Low</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
             </table>
         )
     }

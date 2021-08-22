@@ -7,8 +7,8 @@ import routePaths from './configuration/routePaths';
 import Layout from './containers/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
 
-const asyncFavourites = asyncComponent(() => {
-    return import('./containers/Favourites/Favourites');
+const asyncFavorites = asyncComponent(() => {
+    return import('./containers/Favorites/Favorites');
 });
 
 const asyncPairDetails = asyncComponent(() => {
@@ -30,7 +30,7 @@ class App extends Component {
                 <Switch>
                     <Route path={routePaths.DETAIL} component={asyncPairDetails} />
                     <Route path={routePaths.DASHBOARD} exact component={Dashboard} />
-                    <Route path={routePaths.FAVOURITES} exact component={asyncFavourites} />
+                    <Route path={routePaths.FAVORITES} exact component={asyncFavorites} />
                     <Redirect to="/"/>
                 </Switch>
             );

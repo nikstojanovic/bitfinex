@@ -1,3 +1,5 @@
+@import "../../../../style/abstracts/variables";
+
 .NavigationItem {
     margin: 0;
     display: flex;
@@ -11,16 +13,17 @@
     width: 100%;
     box-sizing: border-box;
     display: block;
-    color: white;
+    color: black;
     height: 100%;
-    padding: 16px 10px;
+    padding: 16px 24px;
     border-bottom: 4px solid transparent;
-}
 
-.NavigationItem a:hover,
-.NavigationItem a:active,
-.NavigationItem a.active {
-    background-color: #8f5c2c;
-    border-bottom: 4px solid #40a4c8;
-    color: white;
+    &:hover {
+        color: $primary-color;
+    }
+
+    &.active {
+        border-bottom: 4px solid $primary-color;
+        color: $primary-color;
+    }
 }

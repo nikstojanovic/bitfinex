@@ -10,7 +10,7 @@ const toolbar = (props) => (
             <NavigationItems isAuthenticated={props.isAuth}/>
         </nav>
         { !props.isAuth
-            ? <Button className="NavigationItem" clicked={props.onLoginClick}>Login</Button>
+            ? <Button className="NavigationItem" btnType="Primary" clicked={props.onLoginClick}>Login</Button>
             : null}
     </header>
 );

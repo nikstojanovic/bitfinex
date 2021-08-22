@@ -1,3 +1,5 @@
+@import "../../../style/abstracts/variables";
+
 .Loader {
     display: block;
     position: relative;
@@ -15,7 +17,7 @@
     border-radius: 50%;
     animation: spinning-rings 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border: 25px solid;
-    border-color: orangered transparent transparent transparent;
+    border-color: $secondary-color transparent transparent transparent;
 }
 
 .Ring:nth-child(1) {

@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reportWebVitals from './reportWebVitals';
 
-import './index.scss';
+import './style/main.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import dashboardReducer from './store/reducers/dashboard';

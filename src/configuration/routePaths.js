@@ -1,6 +1,6 @@
 const routePaths = {
     DASHBOARD: '/',
-    FAVOURITES: '/favourites',
+    FAVORITES: '/favorites',
     DETAIL: '/detail/:pairId'
 };
 

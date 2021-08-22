@@ -4,46 +4,45 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import axios from '../../configuration/axiosOrders.js';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 const PairDetails = ({match, loading, tradingPairDetails, onInitPairDetails, isAuthenticated}) => {
-    const [favourites, setFavourites] = useLocalStorage(`favourites`, []);
-    const [buttonType, setButtonType] = useState('Success');
+    const [favorites, setFavorites] = useLocalStorage(`favorites`, []);
+    const [buttonType, setButtonType] = useState('Primary');
 
     const pairId = match?.params?.pairId;
 
     useEffect(() => {
-        favourites.includes(pairId)
-            ? setButtonType('Danger')
-            : setButtonType('Success');
-    }, [favourites, pairId])
+        favorites.includes(pairId)
+            ? setButtonType('Secondary')
+            : setButtonType('Primary');
+    }, [favorites, pairId])
 
     useEffect(() => {
         onInitPairDetails(pairId);
     }, [onInitPairDetails, pairId])
 
-    const addToFavourites = () => {
-        if (favourites.includes(pairId)) return;
+    const addToFavorites = () => {
+        if (favorites.includes(pairId)) return;
 
-        setFavourites([...favourites, pairId]);
-        setButtonType('Danger');
+        setFavorites([...favorites, pairId]);
+        setButtonType('Secondary');
     }
 
-    const removeFromFavourites = () => {
-        const itemIndex = favourites.indexOf(pairId);
+    const removeFromFavorites = () => {
+        const itemIndex = favorites.indexOf(pairId);
 
         if (itemIndex < 0) return;
 
-        const arrayToChange = [...favourites].filter(pair => pair !== pairId);
-        setFavourites(arrayToChange);
-        setButtonType('Success');
+        const arrayToChange = [...favorites].filter(pair => pair !== pairId);
+        setFavorites(arrayToChange);
+        setButtonType('Primary');
     }
 
-    const isButtonDefault = buttonType !== 'Danger';
-    const buttonText = isButtonDefault ? 'Add to favourites' : 'Remove from favourites';
+    const isButtonDefault = buttonType !== 'Secondary';
+    const buttonText = isButtonDefault ? 'Add to favorites' : 'Remove from favorites';
 
     let content = <Spinner />;
 
@@ -55,16 +54,34 @@ const PairDetails = ({match, loading, tradingPairDetails, onInitPairDetails, isA
             tradingPairDetails.low
         ];
 
+        const row = rowData.map((pairInfo, idx) => <td key={idx}>{pairInfo} </td>);
+
         content = (
             <>
-                {rowData.map((pairInfo, idx) => <span key={idx}>{pairInfo} </span>)}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Last price</th>
+                            <th>High</th>
+                            <th>Low</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {row}
+                        </tr>
+                    </tbody>
+                </table>
                 {isAuthenticated && (
-                    <Button
-                        clicked={() => isButtonDefault ? addToFavourites() : removeFromFavourites()}
-                        btnType={buttonType}
-                    >
-                        {buttonText}
-                    </Button>
+                    <div>
+                        <Button
+                            clicked={() => isButtonDefault ? addToFavorites() : removeFromFavorites()}
+                            btnType={buttonType}
+                        >
+                            {buttonText}
+                        </Button>
+                    </div>
                 )}
             </>
         )
