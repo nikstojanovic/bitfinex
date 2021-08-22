@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -33,6 +34,11 @@ const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
 
     return <>{content}</>;
 }
+
+Dashboard.propTypes = {
+    tradingPairs: PropTypes.array.isRequired,
+    onInitTradingPairs: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => {
     return {

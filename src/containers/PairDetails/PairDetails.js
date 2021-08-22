@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
@@ -80,6 +81,13 @@ const PairDetails = ({match, loading, tradingPairDetails, onInitPairDetails, isA
 
     return <>{content}</>;
 }
+
+PairDetails.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    tradingPairDetails: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
+    onInitPairDetails: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => {
     return {

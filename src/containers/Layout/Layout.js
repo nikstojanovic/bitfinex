@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Navbar from '../../components/Navigation/Navbar/Navbar';
@@ -18,6 +19,11 @@ const Layout = ({isAuthenticated, onAuth, children}) => {
         </>
     );
 }
+
+Layout.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    onAuth: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => {
     return {

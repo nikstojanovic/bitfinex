@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './DataTable.scss';
 
@@ -7,7 +8,7 @@ const DataTable = ({tableHeader, children}) => {
         <table className="DataTable">
             <thead>
                 <tr>
-                    {tableHeader?.map(headerEntry => <th>{headerEntry}</th>)}
+                    {tableHeader?.map(headerEntry => <th key={headerEntry}>{headerEntry}</th>)}
                 </tr>
             </thead>
             <tbody>
@@ -16,5 +17,10 @@ const DataTable = ({tableHeader, children}) => {
         </table>
     )
 }
+
+DataTable.propTypes = {
+    tableHeader: PropTypes.array.isRequired,
+    children: PropTypes.any.isRequired,
+};
 
 export default DataTable;

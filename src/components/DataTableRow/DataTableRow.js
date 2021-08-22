@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import useWebSocket from '../../hooks/useWebSocket';
@@ -26,5 +27,10 @@ const DataTableRow = ({pairId, hasDetailLink}) => {
         </tr>
     )
 }
+
+DataTableRow.propTypes = {
+    pairId: PropTypes.string.isRequired,
+    hasDetailLink: PropTypes.bool.isRequired,
+};
 
 export default DataTableRow;

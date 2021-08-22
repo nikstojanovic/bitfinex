@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
 
@@ -15,5 +17,10 @@ const Navbar = ({isAuth, onLoginClick}) => (
         }
     </header>
 );
+
+Navbar.propTypes = {
+    isAuth: PropTypes.bool.isRequired,
+    onLoginClick: PropTypes.func.isRequired,
+};
 
 export default Navbar;

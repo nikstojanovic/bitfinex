@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Backdrop from '../Backdrop/Backdrop';
 
 import './Modal.scss';
-import Backdrop from '../Backdrop/Backdrop';
 
 const Modal = ({show, modalClosed, children}) => {
     return (
@@ -16,5 +18,16 @@ const Modal = ({show, modalClosed, children}) => {
         </>
     );
 }
+
+Modal.propTypes = {
+    show: PropTypes.bool,
+    modalClosed: PropTypes.func.isRequired,
+    children: PropTypes.any,
+};
+
+Modal.defaultProps = {
+    show: false,
+    children: '',
+};
 
 export default Modal;
