@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 
 import endpoints from '../../configuration/endpoints';
-import axios from '../../configuration/axiosOrders';
+import axios from '../../configuration/axiosConfig';
 import * as actions from '../actions';
 
 export function* initTradingPairsSaga(action) {

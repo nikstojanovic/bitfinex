@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import Modal from '../../components/UI/Modal/Modal';
-import * as actions from '../../store/actions';
+import Modal from '../components/UI/Modal/Modal';
+import * as actions from '../store/actions';
 
 const withErrorHandler = WrappedComponent => {
-    const ErrorProvider = (props) => {
-        const {globalError, onClearGlobalError} = props;
+    const ErrorProvider = props => {
+        const { globalError, onClearGlobalError } = props;
 
         return (
             <>

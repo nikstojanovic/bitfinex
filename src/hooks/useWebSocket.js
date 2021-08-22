@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import endpoints from '../configuration/endpoints'
 
@@ -10,9 +10,9 @@ export default function useWebSocket(pairId) {
     useEffect(() => {
         webSocket.current = new WebSocket(endpoints.BITFINEX_WS);
 
-        let msg = JSON.stringify({ 
-            event: 'subscribe', 
-            channel: 'ticker', 
+        let msg = JSON.stringify({
+            event: 'subscribe',
+            channel: 'ticker',
             symbol: `t${pairSymbol}`
         })
 

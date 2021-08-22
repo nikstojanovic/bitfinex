@@ -23,6 +23,6 @@ export const fetchPairDetailsSuccess = (pairDetails) => {
 export const fetchPairDetailsFail = (error) => {
     return {
         type: actionTypes.FETCH_PAIR_DETAILS_FAIL,
-        error: error
+        error,
     }
 };
