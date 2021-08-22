@@ -9,10 +9,10 @@ const Favourites = () => {
     let content = <div>NO FAVOURITES</div>;
 
     if (favourites.length) {
-        content = [...favourites].map(pairId => <SingleRow pairId={pairId} hasDetailLink />)
+        content = [...favourites].map(pairId => <SingleRow key={pairId} pairId={pairId} hasDetailLink />)
     }
 
-    return content;
+    return <>{content}</>;
 }
 
 export default Favourites;

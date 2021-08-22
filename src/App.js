@@ -6,7 +6,6 @@ import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import routePaths from './configuration/routePaths';
 import Layout from './hoc/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
-import * as actions from './store/actions/index';
 
 const asyncFavourites = asyncComponent(() => {
     return import('./containers/Favourites/Favourites');
@@ -17,10 +16,6 @@ const asyncPairDetails = asyncComponent(() => {
 });
 
 class App extends Component {
-    componentDidMount () {
-        this.props.onTryAutoSignup();
-    }
-
     render() {
         let routes = (
             <Switch>
@@ -51,10 +46,4 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onTryAutoSignup: () => dispatch(actions.authCheckState())
-    };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, null)(App));

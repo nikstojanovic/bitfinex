@@ -11,10 +11,3 @@ export function* authUserSaga(action) {
         yield put(actions.authFail('error during authentication'));
     }
 }
-
-export function* authCheckStateSaga(action) {
-    const token = yield localStorage.getItem('token');
-    if (token) {
-        yield put(actions.authSuccess(token));
-    }
-}

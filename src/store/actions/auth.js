@@ -25,9 +25,3 @@ export const auth = () => {
         type: actionTypes.AUTH_USER,
     }
 };
-
-export const authCheckState = () => {
-    return {
-        type: actionTypes.AUTH_CHECK_STATE
-    }
-};

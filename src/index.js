@@ -30,7 +30,7 @@ const store = createStore(rootReducer, composeEnhancers(
 
 sagaMiddleware.run(watchAuth);
 sagaMiddleware.run(watchDashboard);
-// sagaMiddleware.run(watchPairDetails);
+sagaMiddleware.run(watchPairDetails);
 
 const app = (
     <React.StrictMode>
