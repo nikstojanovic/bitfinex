@@ -2,7 +2,7 @@ import React from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
 
-import './Navbar.css';
+import './Navbar.scss';
 
 const toolbar = (props) => (
     <header className="Navbar">

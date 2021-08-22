@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Toolbar from '../../components/Navigation/Navbar/Navbar';
 
-import './Layout.css';
+import './Layout.scss';
 
 const Layout = ({isAuthenticated, onAuth, children}) => {
     return (

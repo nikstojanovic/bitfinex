@@ -1,8 +1,8 @@
 import axios from 'axios';
-import config from './config';
+import endpoints from './endpoints';
 
 const instance = axios.create({
-    baseURL: config.PUBLIC_URL || '/'
+    baseURL: endpoints.PUBLIC_URL || '/'
 });
 
 export default instance;

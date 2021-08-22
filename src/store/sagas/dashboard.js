@@ -1,14 +1,12 @@
 import { put } from 'redux-saga/effects';
 
-import config from '../../configuration/config';
+import endpoints from '../../configuration/endpoints';
 import axios from '../../configuration/axiosOrders';
 import * as actions from '../actions';
 
 export function* initTradingPairsSaga(action) {
-    const endpoint = config.ENDPOINTS.GET_TRAING_PAIRS;
-    
     try {
-        const response = yield axios.get(endpoint);
+        const response = yield axios.get(endpoints.GET_TRADING_PAIRS);
         const tradingPairs = response.data.slice(0, 5);
         yield put(actions.setTradingPairs(tradingPairs));
     } catch (error) {

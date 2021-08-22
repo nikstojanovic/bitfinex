@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import routePaths from './configuration/routePaths';
-import Layout from './hoc/Layout/Layout';
+import Layout from './containers/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
 
 const asyncFavourites = asyncComponent(() => {

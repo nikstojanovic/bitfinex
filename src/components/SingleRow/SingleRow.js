@@ -1,13 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 
+import endpoints from '../../configuration/endpoints'
+
 const SingleRow = ({pairId, hasDetailLink}) => {
     const [rowData, setRowData] = useState({});
     const webSocket = useRef(null);
     const pairSymbol = pairId.toUpperCase();
 
     useEffect(() => {
-        webSocket.current = new WebSocket('wss://api-pub.bitfinex.com/ws/2');
+        webSocket.current = new WebSocket(endpoints.BITFINEX_WS);
 
         let msg = JSON.stringify({ 
             event: 'subscribe', 
@@ -46,14 +48,18 @@ const SingleRow = ({pairId, hasDetailLink}) => {
 
     return (
         <tr>
-            {rowValues.map((cellData, idx) => (
-                <td key={rowKeys[idx]}>
-                    {hasDetailLink && idx === 0
-                        ? <NavLink to={`/detail/${pairId}`}>{cellData}</NavLink>
-                        : cellData
-                    }
-                </td>
-            ))}
+            {rowValues.map((cellData, idx) => {
+                const cellValue = cellData.toLocaleString('en');
+
+                return (
+                    <td key={rowKeys[idx]}>
+                        {hasDetailLink && idx === 0
+                            ? <NavLink to={`/detail/${pairId}`}>{cellValue}</NavLink>
+                            : cellValue
+                        }
+                    </td>
+                )
+            })}
         </tr>
     )
 }

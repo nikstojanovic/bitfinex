@@ -7,14 +7,18 @@ import SingleRow from '../../components/SingleRow/SingleRow';
 import * as actions from '../../store/actions/index';
 import axios from '../../configuration/axiosOrders.js';
 
-const Dashboard = ({error, tradingPairs, onInitTradingPairs}) => {
+const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
+    const isDataInitialized = !!tradingPairs?.length;
+
     useEffect(() => {
+        if (isDataInitialized) return;
+
         onInitTradingPairs();
-    }, [onInitTradingPairs])
+    }, [onInitTradingPairs, isDataInitialized])
 
-    let content = error ? <p>Trading pairs can't be loaded</p> : <Spinner />;
+    let content = <Spinner />;
 
-    if (tradingPairs?.length) {
+    if (isDataInitialized) {
         const rows = tradingPairs.map(tradingPair => (
             <SingleRow
                 key={tradingPair}

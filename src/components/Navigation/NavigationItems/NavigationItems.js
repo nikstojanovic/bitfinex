@@ -3,7 +3,7 @@ import React from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
 import routePaths from '../../../configuration/routePaths';
 
-import './NavigationItems.css';
+import './NavigationItems.scss';
 
 const navigationItems = (props) => (
     <ul className="NavigationItems">
