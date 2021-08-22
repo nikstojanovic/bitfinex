@@ -1,0 +1,18 @@
+.DataTable {
+    width: 100%;
+
+    th {
+        min-width: 140px;
+        padding: 10px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: right;
+
+        &:first-of-type {
+            text-align: left;
+        }
+    }
+}

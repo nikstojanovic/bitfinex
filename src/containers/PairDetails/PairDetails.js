@@ -6,10 +6,12 @@ import withErrorHandler from '../../hoc/withErrorHandler';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import DataTable from '../../components/DataTable/DataTable';
 
 const PairDetails = ({match, loading, tradingPairDetails, onInitPairDetails, isAuthenticated}) => {
     const [favorites, setFavorites] = useLocalStorage(`favorites`, []);
     const [buttonType, setButtonType] = useState('Primary');
+    const tableHeader = ['Symbol', 'Last price', 'High', 'Low'];
 
     const pairId = match?.params?.pairId;
 
@@ -53,25 +55,15 @@ const PairDetails = ({match, loading, tradingPairDetails, onInitPairDetails, isA
             tradingPairDetails.low
         ];
 
-        const row = rowData.map((pairInfo, idx) => <td key={idx}>{pairInfo} </td>);
+        const rowCells = rowData.map((pairInfo, idx) => {
+            const cellValue = pairInfo && !isNaN(pairInfo) ? Number(pairInfo).toLocaleString('en') : pairInfo || '';
+
+            return <td key={idx}>{cellValue}</td>;
+        });
 
         content = (
             <>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Symbol</th>
-                            <th>Last price</th>
-                            <th>High</th>
-                            <th>Low</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {row}
-                        </tr>
-                    </tbody>
-                </table>
+                <DataTable tableHeader={tableHeader}><tr>{rowCells}</tr></DataTable>
                 {isAuthenticated && (
                     <div>
                         <Button

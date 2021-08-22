@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import useWebSocket from '../../hooks/useWebSocket';
 
-const TableRow = ({pairId, hasDetailLink}) => {
+const DataTableRow = ({pairId, hasDetailLink}) => {
     const [rowData] = useWebSocket(pairId);
     
     const rowValues = Object.values(rowData);
@@ -27,4 +27,4 @@ const TableRow = ({pairId, hasDetailLink}) => {
     )
 }
 
-export default TableRow;
+export default DataTableRow;

@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
-import withErrorHandler from '../../hoc/withErrorHandler';
-import TableRow from '../../components/TableRow/TableRow';
+import DataTableRow from '../../components/DataTableRow/DataTableRow';
+import DataTable from '../../components/DataTable/DataTable';
 import * as actions from '../../store/actions/index';
+import withErrorHandler from '../../hoc/withErrorHandler';
 
 const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
     const isDataInitialized = !!tradingPairs?.length;
+    const tableHeader = ['Name', 'Last', 'Change', 'Change Percent', 'High', 'Low'];
 
     useEffect(() => {
         if (isDataInitialized) return;
@@ -19,30 +21,14 @@ const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
 
     if (isDataInitialized) {
         const rows = tradingPairs.map(tradingPair => (
-            <TableRow
+            <DataTableRow
                 key={tradingPair}
                 pairId={tradingPair}
                 hasDetailLink
             />
         ));
         
-        content = (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Last</th>
-                        <th>Change</th>
-                        <th>Change Percent</th>
-                        <th>High</th>
-                        <th>Low</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        )
+        content = <DataTable tableHeader={tableHeader}>{rows}</DataTable>;
     }
 
     return <>{content}</>;
