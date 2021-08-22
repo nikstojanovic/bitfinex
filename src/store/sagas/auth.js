@@ -4,6 +4,7 @@ import * as actions from '../actions/index';
 
 export function* authUserSaga(action) {
     yield put(actions.authStart());
+    
     try {
         yield localStorage.setItem('token', true);
         yield put(actions.authSuccess(true));

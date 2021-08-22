@@ -17,7 +17,7 @@ const fetchTradingPairsFailed = (state, action) => {
     return updateObject(state, {error: true});
 };
 
-const burgerBuilder = (state = initialState, action) => {
+const dashboardReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_TRADING_PAIRS: return setTradingPairs(state, action);
         case actionTypes.FETCH_TRADING_PAIRS_FAILED: return fetchTradingPairsFailed(state, action);
@@ -25,4 +25,4 @@ const burgerBuilder = (state = initialState, action) => {
     }
 };
 
-export default burgerBuilder;
+export default dashboardReducer;

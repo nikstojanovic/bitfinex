@@ -1,6 +1,6 @@
 // this file is also called root saga
 
-import { takeEvery, all, takeLatest } from 'redux-saga/effects';
+import { takeEvery, takeLatest } from 'redux-saga/effects';
 
 import * as actionTypes from '../actions/actionTypes';
 import { authUserSaga } from './auth';
@@ -8,9 +8,7 @@ import { initTradingPairsSaga } from './dashboard';
 import { initPairDetailsSaga } from './pairDetails';
 
 export function* watchAuth() {
-    yield all([
-        takeEvery(actionTypes.AUTH_USER, authUserSaga),
-    ]);
+    yield takeEvery(actionTypes.AUTH_USER, authUserSaga);
 }
 
 export function* watchDashboard() {

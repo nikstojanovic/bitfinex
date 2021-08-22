@@ -4,15 +4,16 @@ import Button from '../../UI/Button/Button';
 
 import './Navbar.scss';
 
-const toolbar = (props) => (
+const Navbar = ({isAuth, onLoginClick}) => (
     <header className="Navbar">
         <nav>
-            <NavigationItems isAuthenticated={props.isAuth}/>
+            <NavigationItems isAuthenticated={isAuth}/>
         </nav>
-        { !props.isAuth
-            ? <Button className="NavigationItem" btnType="Primary" clicked={props.onLoginClick}>Login</Button>
-            : null}
+        {!isAuth
+            ? <Button className="NavigationItem" btnType="Primary" clicked={onLoginClick}>Login</Button>
+            : null
+        }
     </header>
 );
 
-export default toolbar;
+export default Navbar;

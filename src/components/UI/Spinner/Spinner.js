@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Spinner.scss'
 
-const spinner = () => (
+const Spinner = () => (
     <div className="Loader">
         <div className="Ring" />
         <div className="Ring" />
@@ -11,4 +11,4 @@ const spinner = () => (
     </div>
 );
 
-export default spinner;
+export default Spinner;

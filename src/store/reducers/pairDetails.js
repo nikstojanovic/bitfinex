@@ -24,7 +24,7 @@ const fetchPairDetailsFail = (state, action) => {
     });
 };
 
-const reducer = (state = initialState, action) => {
+const pairDetailsReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FETCH_PAIR_DETAILS_START: return fetchPairDetailsStart(state, action);
         case actionTypes.FETCH_PAIR_DETAILS_SUCCESS: return fetchPairDetailsSuccess(state, action);
@@ -34,4 +34,4 @@ const reducer = (state = initialState, action) => {
 };
 
 
-export default reducer;
+export default pairDetailsReducer;
