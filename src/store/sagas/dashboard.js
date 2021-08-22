@@ -10,6 +10,7 @@ export function* initTradingPairsSaga(action) {
         const tradingPairs = response.data.slice(0, 5);
         yield put(actions.setTradingPairs(tradingPairs));
     } catch (error) {
-        yield put(actions.fetchTradingPairsFailed())
+        yield put(actions.fetchTradingPairsFailed(error))
+        yield put(actions.globalError(error))
     }
 }

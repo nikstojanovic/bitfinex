@@ -20,6 +20,7 @@ const fetchPairDetailsSuccess = (state, action) => {
 
 const fetchPairDetailsFail = (state, action) => {
     return updateObject(state, {
+        error: action.error,
         loading: false
     });
 };

@@ -3,18 +3,18 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     tradingPairs: null,
-    error: false,
+    error: null,
 };
 
 const setTradingPairs = (state, action) => {
     return updateObject (state, {
         tradingPairs: action.tradingPairs,
-        error: false,
+        error: null,
     });
 };
 
 const fetchTradingPairsFailed = (state, action) => {
-    return updateObject(state, {error: true});
+    return updateObject(state, {error: action.error});
 };
 
 const dashboardReducer = (state = initialState, action) => {

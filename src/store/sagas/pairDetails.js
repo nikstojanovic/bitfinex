@@ -13,6 +13,7 @@ export function* initPairDetailsSaga(action) {
         const response = yield axios.get(endpoints.GET_TRADING_PAIR_DETAILS.replace(':symbol', symbol));
         yield put(actions.fetchPairDetailsSuccess(response.data));
     } catch (error) {
-        yield put(actions.fetchPairDetailsFail())
+        yield put(actions.fetchPairDetailsFail(error))
+        yield put(actions.globalError(error))
     }
 }

@@ -12,11 +12,13 @@ import * as serviceWorker from './serviceWorker';
 import dashboardReducer from './store/reducers/dashboard';
 import pairDetailsReducer from './store/reducers/pairDetails';
 import authReducer from './store/reducers/auth';
+import errorsReducer from './store/reducers/errors';
 import { watchAuth, watchDashboard, watchPairDetails } from './store/sagas/index';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
+    errors: errorsReducer,
     dashboard: dashboardReducer,
     pairDetails: pairDetailsReducer,
     auth: authReducer

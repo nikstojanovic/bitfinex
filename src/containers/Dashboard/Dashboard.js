@@ -5,7 +5,6 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import SingleRow from '../../components/SingleRow/SingleRow';
 import * as actions from '../../store/actions/index';
-import axios from '../../configuration/axiosOrders.js';
 
 const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
     const isDataInitialized = !!tradingPairs?.length;
@@ -52,7 +51,6 @@ const Dashboard = ({tradingPairs, onInitTradingPairs}) => {
 const mapStateToProps = state => {
     return {
         tradingPairs: state.dashboard.tradingPairs,
-        error: state.dashboard.error,
     };
 };
 
@@ -62,4 +60,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Dashboard, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Dashboard));

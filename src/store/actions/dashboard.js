@@ -7,9 +7,10 @@ export const setTradingPairs = (tradingPairs) => {
     }
 };
 
-export const fetchTradingPairsFailed = () => {
+export const fetchTradingPairsFailed = (error) => {
     return {
-        type: actionTypes.FETCH_TRADING_PAIRS_FAILED
+        type: actionTypes.FETCH_TRADING_PAIRS_FAILED,
+        error,
     }
 };
 

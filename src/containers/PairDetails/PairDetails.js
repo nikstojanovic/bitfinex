@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
-import axios from '../../configuration/axiosOrders.js';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Button from '../../components/UI/Button/Button';
@@ -104,4 +103,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(PairDetails, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(PairDetails));
