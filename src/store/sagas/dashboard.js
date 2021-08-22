@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects';
 
-import axios from '../../axios-orders';
+import axios from '../../configuration/axiosOrders';
 import * as actions from '../actions';
 
 export function* initTradingPairsSaga(action) {

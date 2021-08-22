@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { NavLink } from 'react-router-dom';
 
-const SingleRow = ({pairId}) => {
+const SingleRow = ({pairId, hasDetailLink}) => {
     const [rowData, setRowData] = useState({});
     const webSocket = useRef(null);
     const pairSymbol = pairId.toUpperCase();
@@ -45,7 +46,14 @@ const SingleRow = ({pairId}) => {
 
     return (
         <tr>
-            {rowValues.map((cellData, idx) => <td key={rowKeys[idx]}>{cellData}</td>)}
+            {rowValues.map((cellData, idx) => (
+                <td key={rowKeys[idx]}>
+                    {hasDetailLink && idx === 0
+                        ? <NavLink to={`/detail/${pairId}`}>{cellData}</NavLink>
+                        : cellData
+                    }
+                </td>
+            ))}
         </tr>
     )
 }

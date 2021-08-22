@@ -26,13 +26,6 @@ export const auth = () => {
     }
 };
 
-export const setAuthRedirectPath = (path) => {
-    return {
-        type: actionTypes.SET_AUTH_REDIRECT_PATH,
-        path: path
-    }
-};
-
 export const authCheckState = () => {
     return {
         type: actionTypes.AUTH_CHECK_STATE

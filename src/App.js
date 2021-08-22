@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
+import routePaths from './configuration/routePaths';
 import Layout from './hoc/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import * as actions from './store/actions/index';
 
-const asyncCheckout = asyncComponent(() => {
-    return import('./containers/Checkout/Checkout');
+const asyncFavourites = asyncComponent(() => {
+    return import('./containers/Favourites/Favourites');
 });
 
-const asyncOrders = asyncComponent(() => {
-    return import('./containers/Orders/Orders');
+const asyncPairDetails = asyncComponent(() => {
+    return import('./containers/PairDetails/PairDetails');
 });
 
 class App extends Component {
@@ -23,7 +24,8 @@ class App extends Component {
     render() {
         let routes = (
             <Switch>
-                <Route path="/" exact component={Dashboard} />
+                <Route path={routePaths.DETAIL} component={asyncPairDetails} />
+                <Route path={routePaths.DASHBOARD} exact component={Dashboard} />
                 <Redirect to="/"/>
             </Switch>
         );
@@ -31,21 +33,15 @@ class App extends Component {
         if (this.props.isAuthenticated) {
             routes = (
                 <Switch>
-                    <Route path="/checkout" component={asyncCheckout} />
-                    <Route path="/orders" component={asyncOrders} />
-                    <Route path="/" exact component={Dashboard} />
+                    <Route path={routePaths.DETAIL} component={asyncPairDetails} />
+                    <Route path={routePaths.DASHBOARD} exact component={Dashboard} />
+                    <Route path={routePaths.FAVOURITES} exact component={asyncFavourites} />
                     <Redirect to="/"/>
                 </Switch>
             );
         }
 
-        return (
-            <div>
-                <Layout>
-                    {routes}
-                </Layout>
-            </div>
-        );
+        return <Layout>{routes}</Layout>;
     }
 }
 

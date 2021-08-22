@@ -2,10 +2,10 @@ import React from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
 
-import './Toolbar.css';
+import './Navbar.css';
 
 const toolbar = (props) => (
-    <header className="Toolbar">
+    <header className="Navbar">
         <nav>
             <NavigationItems isAuthenticated={props.isAuth}/>
         </nav>

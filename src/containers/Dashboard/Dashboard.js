@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import SingleRow from './SingleRow';
+import SingleRow from '../../components/SingleRow/SingleRow';
 import * as actions from '../../store/actions/index';
-import axios from '../../axios-orders.js';
+import axios from '../../configuration/axiosOrders.js';
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -19,7 +18,14 @@ class Dashboard extends Component {
         let content = error ? <p>Trading pairs can't be loaded</p> : <Spinner />;
 
         if (tradingPairs?.length) {
-            const rows = tradingPairs.map(tradingPair => <SingleRow key={tradingPair} pairId={tradingPair} />)
+            const rows = tradingPairs.map(tradingPair => (
+                <SingleRow
+                    key={tradingPair}
+                    pairId={tradingPair}
+                    hasDetailLink
+                />
+            ));
+            
             content = (
                 <table style={{width: '100%'}}>
                 <thead>
@@ -55,11 +61,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-        onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
         onInitTradingPairs: () => dispatch(actions.initTradingPairs()),
-        onInitPurchase: () => dispatch(actions.purchaseInit()),
-        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     };
 };
 

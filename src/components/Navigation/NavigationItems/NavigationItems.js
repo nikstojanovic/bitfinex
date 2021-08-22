@@ -1,13 +1,15 @@
 import React from 'react';
 
-import './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
+import routePaths from '../../../configuration/routePaths';
+
+import './NavigationItems.css';
 
 const navigationItems = (props) => (
     <ul className="NavigationItems">
-        <NavigationItem link="/" exact>Home</NavigationItem>
+        <NavigationItem link={routePaths.DASHBOARD} exact>Home</NavigationItem>
         { props.isAuthenticated
-            ? <NavigationItem link="/orders">Favorites</NavigationItem>
+            ? <NavigationItem link={routePaths.FAVOURITES}>Favorites</NavigationItem>
             : null}
     </ul>
 );

@@ -10,15 +10,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import dashboardReducer from './store/reducers/dashboard';
-import orderReducer from './store/reducers/order';
+import pairDetailsReducer from './store/reducers/pairDetails';
 import authReducer from './store/reducers/auth';
-import { watchAuth, watchDashboard, watchOrder } from './store/sagas/index';
+import { watchAuth, watchDashboard, watchPairDetails } from './store/sagas/index';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
     dashboard: dashboardReducer,
-    order: orderReducer,
+    pairDetails: pairDetailsReducer,
     auth: authReducer
 });
 
@@ -30,7 +30,7 @@ const store = createStore(rootReducer, composeEnhancers(
 
 sagaMiddleware.run(watchAuth);
 sagaMiddleware.run(watchDashboard);
-sagaMiddleware.run(watchOrder);
+// sagaMiddleware.run(watchPairDetails);
 
 const app = (
     <React.StrictMode>
